@@ -1,9 +1,10 @@
 const display = document.getElementById('display');
-const result=document.getElementById('result')
+const result = document.getElementById('result');
 
 function clearDisplay() {
     display.value = '';
-    result.textContent='';
+    result.textContent = '';
+    result.parentNode.classList.remove('show');
 }
 
 function deleteLast() {
@@ -17,8 +18,10 @@ function appendToDisplay(value) {
 function calculateResult() {
     try {
         const result1 = eval(display.value);
-        result.textContent= result1
+        result.textContent = result1;
+        result.parentNode.classList.add('show');
     } catch (e) {
         alert('Invalid Expression');
+        result.parentNode.classList.remove('show');
     }
 }
